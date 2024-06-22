@@ -19,17 +19,21 @@ public class UserService {
     }
 
     public User create(User user) {
-        return this.userRepository.save(user);
+        return userRepository.save(user);
     }
 
-    public List<User> findAll() {
-        return this.userRepository.findAll();
+    public List<User> readAll() {
+        return userRepository.findAll();
+    }
+
+    public User readById(UUID id) {
+        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public User update(User user) {
-        User currentUser = this.userRepository.findById(user.getId()).orElse(null);
+        User currentUser = userRepository.findById(user.getId()).orElse(null);
         if (currentUser != null) {
-            user = this.userRepository.save(user);
+            user = userRepository.save(user);
             return user;
         } else {
             throw new EntityNotFoundException();
@@ -37,9 +41,9 @@ public class UserService {
     }
 
     public void delete(UUID id) {
-        User currentUser = this.userRepository.findById(id).orElse(null);
+        User currentUser = userRepository.findById(id).orElse(null);
         if (currentUser != null) {
-            this.userRepository.deleteById(id);
+            userRepository.deleteById(id);
         } else {
             throw new EntityNotFoundException();
         }

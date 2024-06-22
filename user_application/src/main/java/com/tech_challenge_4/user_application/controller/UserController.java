@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -17,19 +18,25 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<User> create(@RequestBody User user) {
         User createdUser = userService.create(user);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(createdUser);
     }
 
-    @GetMapping()
-    public ResponseEntity<List<User>> getAll() {
-        List<User> users = userService.findAll();
+    @GetMapping
+    public ResponseEntity<List<User>> readAll() {
+        List<User> users = userService.readAll();
         return ResponseEntity.ok(users);
     }
 
-    @PutMapping()
+    @GetMapping("/{id}")
+    public ResponseEntity<User> readById(@PathVariable UUID id) {
+        User user = userService.readById(id);
+        return ResponseEntity.ok(user);
+    }
+
+    @PutMapping
     public ResponseEntity<User> update(@RequestBody User user) {
         User updatedUser = userService.update(user);
         return ResponseEntity.ok(updatedUser);
@@ -38,6 +45,6 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id ) {
         userService.delete(id);
-        return ResponseEntity.ok("user deleted successfully");
+        return ResponseEntity.ok("User deleted successfully");
     }
 }
