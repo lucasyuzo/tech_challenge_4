@@ -36,6 +36,12 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/validate/{id}")
+    public ResponseEntity<String> validate(@PathVariable UUID id) {
+        User user = userService.readById(id);
+        return ResponseEntity.ok("Valid user");
+    }
+
     @PutMapping
     public ResponseEntity<User> update(@RequestBody User user) {
         User updatedUser = userService.update(user);
@@ -44,7 +50,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id ) {
-        userService.delete(id);
+        userService.deleteById(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 }

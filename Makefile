@@ -4,7 +4,10 @@ build-user:
 build-product:
 	cd product_application; mvn compile; mvn package; docker build -t product_app:latest -f ./Dockerfile .
 
-build: build-user build-product
+build-order:
+	cd order_application; mvn compile; mvn package; docker build -t order_app:latest -f ./Dockerfile .
+
+build: build-user build-product build-order
 	@echo "---| BUILT ALL APPLICATIONS |---"
 
 run: build

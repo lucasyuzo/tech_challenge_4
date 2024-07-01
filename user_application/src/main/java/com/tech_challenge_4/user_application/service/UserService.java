@@ -33,19 +33,17 @@ public class UserService {
     public User update(User user) {
         User currentUser = userRepository.findById(user.getId()).orElse(null);
         if (currentUser != null) {
-            user = userRepository.save(user);
-            return user;
-        } else {
-            throw new EntityNotFoundException();
+            return userRepository.save(user);
         }
+        throw new EntityNotFoundException();
     }
 
-    public void delete(UUID id) {
+    public void deleteById(UUID id) {
         User currentUser = userRepository.findById(id).orElse(null);
         if (currentUser != null) {
             userRepository.deleteById(id);
-        } else {
-            throw new EntityNotFoundException();
+            return;
         }
+        throw new EntityNotFoundException();
     }
 }

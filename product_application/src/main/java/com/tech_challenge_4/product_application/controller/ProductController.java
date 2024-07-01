@@ -37,6 +37,15 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @GetMapping("/validate/{id}/{quantity}")
+    public ResponseEntity<String> validateItem(
+            @PathVariable UUID id,
+            @PathVariable int quantity
+    ) {
+        productService.validateItem(id, quantity);
+        return ResponseEntity.ok("Valid product");
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(
             @PathVariable UUID id,
@@ -71,7 +80,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
-        productService.delete(id);
+        productService.deleteById(id);
         return ResponseEntity.ok("Product deleted successfully");
     }
 }

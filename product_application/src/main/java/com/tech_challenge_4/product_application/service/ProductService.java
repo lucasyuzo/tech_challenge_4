@@ -35,11 +35,9 @@ public class ProductService {
             product.setName(name);
             product.setDescription(description);
             product.setPrice(price);
-            product = productRepository.save(product);
-            return product;
-        } else {
-            throw new EntityNotFoundException();
+            return productRepository.save(product);
         }
+        throw new EntityNotFoundException();
     }
 
     public Product addQuantity(UUID id, int quantity) {
@@ -49,33 +47,42 @@ public class ProductService {
         Product product = productRepository.findById(id).orElse(null);
         if (product != null) {
             product.addQuantity(quantity);
-            product = productRepository.save(product);
-            return product;
-        } else {
-            throw new EntityNotFoundException();
+            return productRepository.save(product);
         }
+        throw new EntityNotFoundException();
     }
 
     public Product removeQuantity(UUID id, int quantity) {
-        if (quantity >= 0) {
-            throw new IllegalArgumentException("Quantity must be less than 0");
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than 0");
         }
         Product product = productRepository.findById(id).orElse(null);
         if (product != null) {
             product.removeQuantity(quantity);
-            product = productRepository.save(product);
-            return product;
-        } else {
-            throw new EntityNotFoundException();
+            return productRepository.save(product);
         }
+        throw new EntityNotFoundException();
     }
 
-    public void delete(UUID id) {
+    public void deleteById(UUID id) {
         Product currentUser = productRepository.findById(id).orElse(null);
         if (currentUser != null) {
             productRepository.deleteById(id);
-        } else {
-            throw new EntityNotFoundException();
+            return;
+        }
+        throw new EntityNotFoundException();
+    }
+
+    public void validateItem(UUID id, int quantity) throws IllegalArgumentException {
+        Product product = productRepository.findById(id).orElse(null);
+        if (product == null) {
+            throw new IllegalArgumentException("Product not found");
+        }
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than 0");
+        }
+        if (product.getQuantity() < quantity) {
+            throw new IllegalArgumentException("Out of stock");
         }
     }
 }
