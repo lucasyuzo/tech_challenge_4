@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
+    public List<User> readUsersByIdList(List<UUID> usersId) {
+        return userRepository.findAllById(usersId);
+    }
+
     public User update(User user) {
         User currentUser = userRepository.findById(user.getId()).orElse(null);
         if (currentUser != null) {

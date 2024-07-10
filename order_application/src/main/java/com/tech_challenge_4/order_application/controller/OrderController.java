@@ -37,6 +37,11 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
+    @GetMapping("/read-orders-in-preparation")
+    public List<Order> readOrdersInPreparation() {
+        return orderService.readOrdersInPreparation();
+    }
+
     @PutMapping("/update-order-items/{orderId}")
     public ResponseEntity<Order> updateOrderItems(
             @PathVariable UUID orderId,
@@ -59,8 +64,8 @@ public class OrderController {
     }
 
     @PutMapping("/update-order-status-to-delivered/{orderId}")
-    public ResponseEntity<Order> updateOrderStatusToInDelivered(@PathVariable UUID orderId) {
-        Order order = orderService.updateOrderStatusToInDelivered(orderId);
+    public ResponseEntity<Order> updateOrderStatusToDelivered(@PathVariable UUID orderId) {
+        Order order = orderService.updateOrderStatusToDelivered(orderId);
         return ResponseEntity.ok(order);
     }
 

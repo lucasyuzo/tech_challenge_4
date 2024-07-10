@@ -1,6 +1,8 @@
 package com.tech_challenge_4.order_application.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.tech_challenge_4.order_application.entity.dto.ItemDTO;
+import com.tech_challenge_4.order_application.entity.dto.OrderDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +18,7 @@ public class Order {
 
     private UUID userId;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Item> items;
 
@@ -56,5 +58,15 @@ public class Order {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public OrderDTO toDTO() {
+        List<ItemDTO> itemsDTO = getItems().stream().map(Item::toDTO).toList();
+        return new OrderDTO(
+                getId(),
+                getUserId(),
+                itemsDTO,
+                getStatus()
+        );
     }
 }

@@ -1,5 +1,6 @@
 package com.tech_challenge_4.user_application.entity;
 
+import com.tech_challenge_4.user_application.entity.dto.AddressDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -45,6 +46,10 @@ public class Address {
         return cep;
     }
 
+    public char getSubSector() {
+        return cep.charAt(3);
+    }
+
     public String getComplement() {
         return complement;
     }
@@ -60,4 +65,16 @@ public class Address {
     public String getState() {
         return state;
     }
+
+    public AddressDTO toDTO() {
+        return new AddressDTO(
+                getId(),
+                getCep(),
+                getStreet(),
+                getComplement(),
+                getCity(),
+                getState()
+        );
+    }
+
 }

@@ -29,6 +29,10 @@ public class ProductService {
         return productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
+    public List<Product> readProductsByIdList(List<UUID> productsId) {
+        return productRepository.findAllById(productsId);
+    }
+
     public Product update(UUID id, String name, String description, Double price) {
         Product product = productRepository.findById(id).orElse(null);
         if (product != null) {

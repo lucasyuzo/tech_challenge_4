@@ -7,7 +7,10 @@ build-product:
 build-order:
 	cd order_application; mvn compile; mvn package; docker build -t order_app:latest -f ./Dockerfile .
 
-build: build-user build-product build-order
+build-logistics:
+	cd logistics_application; mvn compile; mvn package; docker build -t logistics_app:latest -f ./Dockerfile .
+
+build: build-user build-product build-order build-logistics
 	@echo "---| BUILT ALL APPLICATIONS |---"
 
 run: build

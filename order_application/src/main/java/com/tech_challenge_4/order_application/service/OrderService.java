@@ -8,6 +8,7 @@ import com.tech_challenge_4.order_application.gateway.UserRestClientGateway;
 import com.tech_challenge_4.order_application.repository.OrderRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -59,6 +60,10 @@ public class OrderService {
         throw new EntityNotFoundException();
     }
 
+    public List<Order> readOrdersInPreparation() {
+        return this.orderRepository.findAll().stream().filter(order -> Status.IN_PREPARATION.equals(order.getStatus())).toList();
+    }
+
     public Order updateOrderItems(UUID orderId, List<Item> items) {
         Order order = orderRepository.findById(orderId).orElse(null);
         if (order != null) {
@@ -86,7 +91,7 @@ public class OrderService {
         throw new EntityNotFoundException();
     }
 
-    public Order updateOrderStatusToInDelivered(UUID orderId) {
+    public Order updateOrderStatusToDelivered(UUID orderId) {
         Order order = orderRepository.findById(orderId).orElse(null);
         if (order != null) {
             order.setStatus(Status.DELIVERED);

@@ -1,6 +1,7 @@
 package com.tech_challenge_4.order_application.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.tech_challenge_4.order_application.entity.dto.ItemDTO;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -46,6 +47,14 @@ public class Item {
 
     public Order getOrder() {
         return order;
+    }
+
+    public ItemDTO toDTO() {
+        return new ItemDTO(
+                getId(),
+                getProductId(),
+                getQuantity()
+        );
     }
 
 }

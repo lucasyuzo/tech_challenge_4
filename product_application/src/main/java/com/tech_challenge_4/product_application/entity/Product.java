@@ -1,5 +1,6 @@
 package com.tech_challenge_4.product_application.entity;
 
+import com.tech_challenge_4.product_application.entity.dto.ProductDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -74,5 +75,14 @@ public class Product {
 
     public void removeQuantity(Integer quantity) {
         this.quantity -= quantity;
+    }
+
+    public ProductDTO toDTO() {
+        return new ProductDTO(
+                getId(),
+                getName(),
+                getDescription(),
+                getPrice()
+        );
     }
 }

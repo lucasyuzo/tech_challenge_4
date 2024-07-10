@@ -1,5 +1,7 @@
 package com.tech_challenge_4.user_application.entity;
 
+import com.tech_challenge_4.user_application.entity.dto.AddressDTO;
+import com.tech_challenge_4.user_application.entity.dto.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
@@ -62,6 +64,17 @@ public class User {
 
     public Address getAddress() {
         return address;
+    }
+
+    public UserDTO toDTO() {
+        return new UserDTO(
+                getId(),
+                getCpf(),
+                getFirstName(),
+                getLastName(),
+                getEmail(),
+                getAddress().toDTO()
+        );
     }
 }
 
