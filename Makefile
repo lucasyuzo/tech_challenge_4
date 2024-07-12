@@ -14,4 +14,4 @@ build: build-user build-product build-order build-logistics
 	@echo "---| BUILT ALL APPLICATIONS |---"
 
 run: build
-	docker-compose up
+	docker compose up

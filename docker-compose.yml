@@ -41,6 +41,7 @@ services:
       spring_jpa_defer-datasource-initialization: 'true'
       spring_sql_init_mode: 'always'
       spring_integration_jdbc_initialize-schema: 'always'
+      spring:_batch:_jdbc_initialize-schema: 'always'
   product_db:
     image: 'postgres:latest'
     environment:

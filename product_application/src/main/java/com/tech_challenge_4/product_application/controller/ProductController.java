@@ -3,6 +3,7 @@ package com.tech_challenge_4.product_application.controller;
 import com.tech_challenge_4.product_application.entity.Product;
 import com.tech_challenge_4.product_application.entity.UpdateProductRequest;
 import com.tech_challenge_4.product_application.service.ProductService;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,9 @@ public class ProductController {
 
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(
+            ProductService productService
+    ) {
         this.productService = productService;
     }
 

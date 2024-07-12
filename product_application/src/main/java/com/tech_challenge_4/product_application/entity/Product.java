@@ -41,6 +41,10 @@ public class Product {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -69,6 +73,10 @@ public class Product {
         return quantity;
     }
 
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     public void addQuantity(Integer quantity) {
         this.quantity += quantity;
     }
@@ -84,5 +92,9 @@ public class Product {
                 getDescription(),
                 getPrice()
         );
+    }
+
+    public String toCSVLine() {
+        return name + "," + description + "," + price + "," + quantity;
     }
 }
