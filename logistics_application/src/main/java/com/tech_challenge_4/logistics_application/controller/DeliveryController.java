@@ -84,7 +84,7 @@ public class DeliveryController {
     }
 
     @DeleteMapping("/{deliveryId}")
-    public ResponseEntity<?> deleteBySubSector(@PathVariable UUID deliveryId) {
+    public ResponseEntity<?> deleteById(@PathVariable UUID deliveryId) {
         try {
             this.deliveryService.deleteById(deliveryId);
             return ResponseEntity.ok().build();

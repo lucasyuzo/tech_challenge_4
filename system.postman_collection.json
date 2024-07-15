@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "fd204526-3996-49ee-9a00-3b808bd4e5ee",
+		"name": "Tech Challenge 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13012730"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": \"732.538.510-28\",\n    \"firstName\": \"Graciliano\",\n    \"lastName\": \"Ramos\",\n    \"email\": \"graciliano_ramos@email.com\",\n    \"address\": {\n        \"cep\": \"03676-000\",\n        \"street\": \"Rua General Ferreira de Azevedo\",\n        \"complement\": \"apto 23\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Read Users By Id List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"87393282-04d4-4264-bc2f-6cea5f786544\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/readUsersByIdList"
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Read By User Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/user/52a85cff-cf9c-485d-b084-000506ab154b"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/user/validate/52a85cff-cf9c-485d-b084-000506ab154b"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \"id\": \"52a85cff-cf9c-485d-b084-000506ab154b\",\n    \"cpf\": \"198.679.210-20\",\n    \"firstName\": \"Uncle\",\n    \"lastName\": \"Bob 2\",\n    \"email\": \"uncle_bob@email.com\",\n    \"address\": {\n        \"id\": \"6816fa65-0ad9-4a61-8b44-bb23031266b0\",\n        \"cep\": \"05365-170\",\n        \"street\": \"Rua Andréa Palládio\",\n        \"complement\": \"apto 45\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\"\n    }\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/user/87393282-04d4-4264-bc2f-6cea5f786544"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Monitor ASUS ProArt 27\\\"\",\n    \"description\": \"Monitor\",\n    \"price\": 2529.98,\n    \"quantity\": 23\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/product"
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/product"
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/product/c6cabb17-7a06-432c-9363-895a0207f10e"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/product/validate/c6d3682c-f540-4e79-82c9-3ffe0f6dfd96/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nintendo Switch 2 OLED\",\n    \"description\": \"Console\",\n    \"price\": 3000,\n    \"quantity\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/product/c6cabb17-7a06-432c-9363-895a0207f10e"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/product/c6d3682c-f540-4e79-82c9-3ffe0f6dfd96"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"e0faafea-ff4b-471f-bc6b-dec783d7df67\",\n    \"items\": [\n        {\n            \"productId\": \"c6cabb17-7a06-432c-9363-895a0207f10e\",\n            \"quantity\": 1\n        },\n        {\n            \"productId\": \"a1d12593-beb9-4a11-b2c0-0c6330249810\",\n            \"quantity\": 1\n        },\n        {\n            \"productId\": \"a464e892-15fd-4d89-aadc-66ea7fb94952\",\n            \"quantity\": 1\n        }\n    ],\n    \"status\": \"WAITING_PAYMENT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/order"
+					},
+					"response": []
+				},
+				{
+					"name": "Read All By User Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/order/read-all-by-user-id/e0faafea-ff4b-471f-bc6b-dec783d7df67"
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Order Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/order/read-by-order-id/3efaaa5a-ecaa-4170-947c-cbed385e0b6d"
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Orders In Preparation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/readOrdersInPreparation"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status To In Preparation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/order/update-order-status-to-in-preparation/f47ac10b-58cc-4372-a567-0e02b2c3d481"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status To Delivering",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/order/update-order-status-to-delivering/f47ac10b-58cc-4372-a567-0e02b2c3d481"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status To Delivered",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/order/update-order-status-to-delivered/f47ac10b-58cc-4372-a567-0e02b2c3d481"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/order/f47ac10b-58cc-4372-a567-0e02b2c3d481"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logistics",
+			"item": [
+				{
+					"name": "Truck",
+					"item": [
+						{
+							"name": "Create Truck",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"licensePlate\": \"CEC-4652\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8083/truck"
+							},
+							"response": []
+						},
+						{
+							"name": "Read All Trucks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/truck"
+							},
+							"response": []
+						},
+						{
+							"name": "Read By Truck Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/truck/d5280be0-ece7-403a-8ab8-98ce61423563"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Truck",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"d5280be0-ece7-403a-8ab8-98ce61423563\",\n    \"licensePlate\": \"FSM-2241\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8083/truck"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Truck By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8083/truck/d5280be0-ece7-403a-8ab8-98ce61423563"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delivery Person",
+					"item": [
+						{
+							"name": "Create Delivery Person",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Lucas\",\n    \"lastName\": \" Yuzo\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8083/delivery-person"
+							},
+							"response": []
+						},
+						{
+							"name": "Read All Delivery Person",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/delivery-person"
+							},
+							"response": []
+						},
+						{
+							"name": "Read Delivery Person By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/delivery-person/bbde3e8c-570f-490b-8653-7ecda6ec975a"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Delivery Person",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"bbde3e8c-570f-490b-8653-7ecda6ec975a\",\n    \"firstName\": \"Emiliano\",\n    \"lastName\": \"Pereira Ramirez\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8083/delivery-person"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Delivery Person By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8083/delivery-person/bbde3e8c-570f-490b-8653-7ecda6ec975a"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delivery",
+					"item": [
+						{
+							"name": "Create Delivery",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "http://localhost:8083/delivery/6"
+							},
+							"response": []
+						},
+						{
+							"name": "Read Delivery By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/delivery/e3b0c442-98fc-11e4-91aa-00f00f00f00f"
+							},
+							"response": []
+						},
+						{
+							"name": "Read All Deliveries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8083/delivery"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Delivery To Delivered",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:8083/delivery/updated-to-delivered/f2baba4f-d1d8-4c1d-afb2-2920c33eac5a"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Delivery To Returned",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:8083/delivery/updated-to-returned/2f699f74-eeac-46b5-b459-d35b6d755ef4"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Delivery To Canceled",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:8083/delivery/updated-to-canceled/2f699f74-eeac-46b5-b459-d35b6d755ef4"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Delivery By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8083/delivery/f2baba4f-d1d8-4c1d-afb2-2920c33eac5a"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
